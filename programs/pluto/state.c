@@ -2175,11 +2175,11 @@ void fmt_state(struct state *st, const monotime_t now,
 						       " AHin=");
 			}
 			mbcp = readable_humber(
-					(u_long)st->st_ah.attrs.life_kilobytes,
+					c->sa_ipsec_life_bytes,
 					mbcp,
 					traffic_buf +
 					  sizeof(traffic_buf),
-					"! AHmax=");
+					" AHmax=");
 		}
 		if (st->st_esp.present) {
 			add_said(&c->spd.that.host_addr, st->st_esp.attrs.spi,
@@ -2202,11 +2202,11 @@ void fmt_state(struct state *st, const monotime_t now,
 			}
 
 			mbcp = readable_humber(
-					(u_long)st->st_esp.attrs.life_kilobytes,
+					c->sa_ipsec_life_bytes,
 					mbcp,
 					traffic_buf +
 					  sizeof(traffic_buf),
-					"! ESPmax=");
+					" ESPmax=");
 		}
 		if (st->st_ipcomp.present) {
 			add_said(&c->spd.that.host_addr,
